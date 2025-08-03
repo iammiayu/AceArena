@@ -1,0 +1,19 @@
+# Build results
+obj/
+bin/
+[Dd]ebug/
+[Rr]elease/
+
+# Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+packages/
+*.nupkg
+
+# IDE files
+.vs/
+.vscode/
