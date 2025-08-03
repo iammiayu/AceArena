@@ -17,3 +17,5 @@ packages/
 # IDE files
 .vs/
 .vscode/
+
+appsettings.Development.json 
