@@ -1,21 +1,21 @@
 # Build results
-obj/
 bin/
-[Dd]ebug/
-[Rr]elease/
+obj/
 
 # Visual Studio files
+.vs/
 *.suo
 *.user
-*.userosscache
-*.sln.docstates
+
+# Visual Studio Code
+.vscode/
 
 # NuGet
 packages/
 *.nupkg
 
-# IDE files
-.vs/
-.vscode/
+# OS files
+.DS_Store
+Thumbs.db
 
-appsettings.Development.json 
+appsettings.Development.json
