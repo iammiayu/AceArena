@@ -7,7 +7,6 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 添加服务
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -18,7 +17,7 @@ builder.Services.AddSwaggerGen(c =>
         Description = "A simple weather API with JWT authentication"
     });
     
-    // 添加 JWT 认证定义
+    // JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -47,7 +46,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// JWT 配置
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -71,14 +69,14 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// 配置 HTTP 请求管道
+// Swagger
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API V1");
-        c.RoutePrefix = string.Empty; // 让 Swagger 在根路径显示
+        c.RoutePrefix = string.Empty;
     });
 }
 
@@ -86,7 +84,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// 添加一些简单的端点进行测试
+// test
 app.MapGet("/hello", () => "Hello World!")
     .RequireAuthorization()
     .WithName("Hello")
